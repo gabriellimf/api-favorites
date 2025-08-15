@@ -18,4 +18,5 @@ export interface ICustomerRepository {
   save(customerData: CustomerCreateData): Promise<Customer>;
   findById(id: string): Promise<Customer | null>;
   update(customerData: CustomerUpdateData): Promise<Customer>;
+  delete(id: string): Promise<void>;
 }

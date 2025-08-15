@@ -2,12 +2,14 @@ import { Request, Response } from 'express';
 import { CreateCustomerService } from '../../../core/use-cases/CreateCustomerService';
 import { GetCustomerProfileService } from '../../../core/use-cases/GetCustomerProfileService';
 import { UpdateCustomerProfileService } from '../../../core/use-cases/UpdateCustomerProfileService';
+import { DeleteCustomerService } from '../../../core/use-cases/DeleteCustomerService';
 
 export class CustomerController {
   constructor(
     private createCustomerService: CreateCustomerService,
     private getCustomerProfileService: GetCustomerProfileService,
-    private updateCustomerProfileService: UpdateCustomerProfileService
+    private updateCustomerProfileService: UpdateCustomerProfileService,
+    private deleteCustomerProfileService: DeleteCustomerService
   ) {}
 
   async create(request: Request, response: Response): Promise<Response> {
@@ -42,6 +44,17 @@ export class CustomerController {
         data: { name, email, password },
       });
       return response.status(200).json(updatedProfile);
+    } catch (error) {
+      return response.status(400).json({ error: error.message });
+    }
+  }
+
+  async deleteProfile(request: Request, response: Response): Promise<Response> {
+    const customerId = request.user.id;
+
+    try {
+      await this.deleteCustomerProfileService.execute(customerId);
+      return response.status(204).send();
     } catch (error) {
       return response.status(400).json({ error: error.message });
     }

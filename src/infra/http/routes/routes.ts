@@ -9,6 +9,7 @@ import { PrismaCustomerRepository } from '../../database/repositories/PrismaCust
 import { CreateCustomerService } from '../../../core/use-cases/CreateCustomerService';
 import { GetCustomerProfileService } from '../../../core/use-cases/GetCustomerProfileService';
 import { UpdateCustomerProfileService } from '../../../core/use-cases/UpdateCustomerProfileService';
+import { DeleteCustomerService } from '../../../core/use-cases/DeleteCustomerService';
 import { CustomerController } from '../controllers/CustomerController';
 
 const router = Router();
@@ -16,11 +17,13 @@ const router = Router();
 const customerRepository = new PrismaCustomerRepository();
 const createCustomerService = new CreateCustomerService(customerRepository);
 const updateCustomerProfileService = new UpdateCustomerProfileService(customerRepository);
+const deleteCustomerService = new DeleteCustomerService(customerRepository);
 const getCustomerProfileService = new GetCustomerProfileService(customerRepository);
 const customerController = new CustomerController(
   createCustomerService,
   getCustomerProfileService,
-  updateCustomerProfileService
+  updateCustomerProfileService,
+  deleteCustomerService
 );
 const authController = new AuthController(
   new AuthenticateCustomerService(customerRepository)
@@ -42,4 +45,9 @@ router.get('/profile', authMiddleware, (request, response) => {
 router.put('/profile', authMiddleware, validate(updateCustomerSchema), async (request, response) => {
   return customerController.updateProfile(request, response);
 });
+
+router.delete('/profile', authMiddleware, async (request, response) => {
+  return customerController.deleteProfile(request, response);
+});
+
 export { router };
