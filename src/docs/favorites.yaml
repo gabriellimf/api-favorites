@@ -1,0 +1,57 @@
+paths:
+  /favorites:
+    post:
+      summary: Adiciona um produto aos favoritos
+      tags: [Favoritos]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/../components.yaml/schemas/AddFavoriteRequest"
+      responses:
+        "201":
+          description: Favorito adicionado com sucesso.
+        "400":
+          description: Erro de negócio (produto não existe ou já é favorito).
+        "401":
+          description: Não autorizado.
+    get:
+      summary: Lista os produtos favoritos do usuário
+      tags: [Favoritos]
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Lista de produtos favoritos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/../components.yaml/schemas/Product"
+        "401":
+          description: Não autorizado.
+
+  /favorites/{productId}:
+    delete:
+      summary: Remove um produto dos favoritos
+      tags: [Favoritos]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+          description: O ID do produto a ser removido.
+      responses:
+        "204":
+          description: Favorito removido com sucesso.
+        "400":
+          description: Favorito não encontrado.
+        "401":
+          description: Não autorizado.
