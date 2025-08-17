@@ -20,9 +20,13 @@ Na implementação desse desafio, tentei utilizar boas práticas de codificaçã
 Utilizei os princípios SOLID (responsabilidade única, aberto/fechado, substituição de Liskov, segregação de interfaces e inversão de dependência) afim de tornar o código mais legível e testável. Por exemplo, o serviço CreateCustomerService tem apenas a responsabilidade de criar clientes, e se algo mudar, apenas este serviço será alterado. Esse respeito à responsabilidade única está alinhado ao primeiro princípio SOLID.
 
 Em termos de arquitetura, separei em: entidades, casos de uso, repositories e gateways. As dependências de código apontam sempre para o centro, garantindo que regras de negócio não dependam de frameworks ou bancos de dados.
-Essa arquitetura proporciona: - Testabilidade: casos de uso e entidades podem ser testados sem necessidade de HTTP ou
-banco de dados. - Independência de banco de dados: a camada de domínio não depende de PostgreSQL ou da nossa ORM
-Prisma. Se necessário, outro banco pode ser usado. - Desacoplamento: os casos de uso e controladores bem estruturados também nos permitem alterar as regras de negócio, caso necessário, sem grandes complexidades.
+Essa arquitetura proporciona: 
+    
+    - Testabilidade: casos de uso e entidades podem ser testados sem necessidade de HTTP ou
+    banco de dados. 
+    - Independência de banco de dados: a camada de domínio não depende de PostgreSQL ou da nossa ORM
+    Prisma. Se necessário, outro banco pode ser usado. 
+    - Desacoplamento: os casos de uso e controladores bem estruturados também nos permitem alterar as regras de negócio, caso necessário, sem grandes complexidades.
 
 Resolvi criar um gateway IProductApiGateway para a implementação doFakeStoreApiGateway utilizando axios para realizar requisições HTTP. Ao tratar o gateway como uma dependência, tornamos a API externa um detalhe fácil de substituir.
 
