@@ -1,106 +1,107 @@
-schemas:
-  Customer:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      name:
-        type: string
-      email:
-        type: string
-        format: email
-      createdAt:
-        type: string
-        format: date-time
-      updatedAt:
-        type: string
-        format: date-time
-  CustomerProfile:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
-      name:
-        type: string
-      email:
-        type: string
-        format: email
-      createdAt:
-        type: string
-        format: date-time
-      updatedAt:
-        type: string
-        format: date-time
-  CreateCustomerRequest:
-    type: object
-    properties:
-      name:
-        type: string
-        example: "João da Silva"
-      email:
-        type: string
-        format: email
-        example: "joao@example.com"
-      password:
-        type: string
-        format: password
-        example: "senha123"
-  UpdateCustomerRequest:
-    type: object
-    properties:
-      name:
-        type: string
-        example: "João da Silva Sauro"
-      email:
-        type: string
-        format: email
-        example: "joao.sauro@example.com"
-      password:
-        type: string
-        format: password
-        example: "novaSenha123"
-  LoginRequest:
-    type: object
-    properties:
-      email:
-        type: string
-        format: email
-      password:
-        type: string
-        format: password
-  LoginResponse:
-    type: object
-    properties:
-      token:
-        type: string
-  AddFavoriteRequest:
-    type: object
-    properties:
-      productId:
-        type: integer
-        example: 1
-  Product:
-    type: object
-    properties:
-      id:
-        type: integer
-      title:
-        type: string
-      price:
-        type: number
-      image:
-        type: string
-      review:
-        type: object
-        properties:
-          rate:
-            type: number
-          count:
-            type: integer
-securitySchemes:
-  bearerAuth:
-    type: http
-    scheme: bearer
-    bearerFormat: JWT
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CustomerProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CreateCustomerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "João da Silva"
+        email:
+          type: string
+          format: email
+          example: "joao@example.com"
+        password:
+          type: string
+          format: password
+          example: "senha123"
+    UpdateCustomerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "João da Silva Sauro"
+        email:
+          type: string
+          format: email
+          example: "joao.sauro@example.com"
+        password:
+          type: string
+          format: password
+          example: "novaSenha123"
+    LoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    AddFavoriteRequest:
+      type: object
+      properties:
+        productId:
+          type: integer
+          example: 1
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        price:
+          type: number
+        image:
+          type: string
+        review:
+          type: object
+          properties:
+            rate:
+              type: number
+            count:
+              type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

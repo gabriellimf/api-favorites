@@ -9,7 +9,7 @@ export class PrismaCustomerRepository implements ICustomerRepository {
       where: { email },
     });
     
-    return customer ? new Customer(customer) : null;
+    return customer ? new Customer(customer, customer.id) : null;
   }
 
   async save(customerData: Omit<Customer, 'id' | 'createdAt' | 'updatedAt'>): Promise<Customer> {
@@ -27,7 +27,7 @@ export class PrismaCustomerRepository implements ICustomerRepository {
       where: { id },
     });
     
-    return customer ? new Customer(customer) : null;
+    return customer ? new Customer(customer, customer.id) : null;
   }
 
   async update(customerData: { id: string; name?: string; email?: string; password?: string }): Promise<Customer> {
@@ -40,7 +40,7 @@ export class PrismaCustomerRepository implements ICustomerRepository {
       },
     });
 
-    return new Customer(customer);
+    return customer ? new Customer(customer, customer.id) : null;
   }
 
   async delete(id: string): Promise<void> {

@@ -10,7 +10,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/../components.yaml/schemas/AddFavoriteRequest"
+              $ref: "#/components/schemas/AddFavoriteRequest"
       responses:
         "201":
           description: Favorito adicionado com sucesso.
@@ -31,7 +31,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/../components.yaml/schemas/Product"
+                  $ref: "#/components/schemas/Product"
         "401":
           description: Não autorizado.
 

@@ -8,14 +8,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/../components.yaml/schemas/CreateCustomerRequest"
+              $ref: "#/components/schemas/CreateCustomerRequest"
       responses:
         "201":
           description: Cliente criado com sucesso.
           content:
             application/json:
               schema:
-                $ref: "#/../components.yaml/schemas/Customer"
+                $ref: "#/components/schemas/Customer"
         "400":
           description: Dados inválidos ou e-mail já em uso.
 
@@ -28,14 +28,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/../components.yaml/schemas/LoginRequest"
+              $ref: "#/components/schemas/LoginRequest"
       responses:
         "200":
           description: Autenticação bem-sucedida.
           content:
             application/json:
               schema:
-                $ref: "#/../components.yaml/schemas/LoginResponse"
+                $ref: "#/components/schemas/LoginResponse"
         "401":
           description: E-mail ou senha inválidos.
 
@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/../components.yaml/schemas/CustomerProfile"
+                $ref: "#/components/schemas/CustomerProfile"
         "401":
           description: Não autorizado (token inválido ou ausente).
     put:
@@ -64,14 +64,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/../components.yaml/schemas/UpdateCustomerRequest"
+              $ref: "#/components/schemas/UpdateCustomerRequest"
       responses:
         "200":
           description: Perfil atualizado com sucesso.
           content:
             application/json:
               schema:
-                $ref: "#/../components.yaml/schemas/Customer"
+                $ref: "#/components/schemas/Customer"
         "400":
           description: Dados inválidos ou e-mail já em uso.
         "401":

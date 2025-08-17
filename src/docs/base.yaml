@@ -4,21 +4,5 @@ info:
   version: "1.0.0"
 servers:
   - url: "http://localhost:3000"
-paths:
-  /customers:
-    $ref: "./customers.yaml#/paths/~1customers"
-  /login:
-    $ref: "./customers.yaml#/paths/~1login"
-  /profile:
-    $ref: "./customers.yaml#/paths/~1profile"
-  /favorites:
-    $ref: "./favorites.yaml#/paths/~1favorites"
-  /favorites/{productId}:
-    $ref: "./favorites.yaml#/paths/~1favorites~1{productId}"
-components:
-  schemas:
-    $ref: "./components.yaml#/schemas"
-  securitySchemes:
-    $ref: "./components.yaml#/securitySchemes"
 security:
   - bearerAuth: []
