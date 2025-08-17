@@ -90,7 +90,7 @@ O servidor estará disponível em http://localhost:3000
 
 ## Documentação da API
 
-**Swagger**:
+**Swagger**: [api-docs](http://localhost:3000/api-docs)
 
 ### Clientes e Autenticação
 
